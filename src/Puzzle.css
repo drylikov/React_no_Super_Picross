@@ -1,0 +1,156 @@
+table {
+  border-spacing: 0;
+  border-collapse: separate;
+}
+
+.ColClues {
+  vertical-align: bottom;
+  text-align: center;
+}
+.ColClues:nth-child(2n) {
+  background-color: lightgray;
+}
+.RowClues {
+  text-align: right;
+  white-space: nowrap;
+  padding-right: 6px;
+}
+.Row:nth-child(2n) .RowClues{
+  background-color: lightgray;
+}
+.highlight {
+  background-color: lightgreen !important;
+}
+
+.Block {
+  width: 16px;
+  height: 16px;
+  border: 1px solid lightgray;
+  text-align: center;
+  vertical-align: middle;
+}
+.Block:nth-of-type(7) {
+  border-left: 1px solid black;
+}
+.Block:nth-of-type(6) {
+  border-right: 1px solid black;
+}
+.Block:nth-of-type(12) {
+  border-left: 1px solid black;
+}
+.Block:nth-of-type(11) {
+  border-right: 1px solid black;
+}
+.Row:nth-of-type(6) .Block {
+  border-bottom: 1px solid black;
+}
+.Row:nth-of-type(7) .Block {
+  border-top: 1px solid black;
+}
+.Row:nth-of-type(11) .Block {
+  border-bottom: 1px solid black;
+}
+.Row:nth-of-type(12) .Block {
+  border-top: 1px solid black;
+}
+.completed .Block {
+  border-color: transparent !important;
+}
+.etched {
+  background-color: gray;
+  border-style: inset;
+  border-color: gray;
+}
+.completed .etched {
+  background-color: black;
+  border-style: solid;
+  border-color: black !important;
+}
+.marked {
+  color: #333;
+}
+.selected {
+  border: 1px solid red;
+  position: relative;
+  animation-direction: alternate;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-name: border-pulse;
+}
+@keyframes border-pulse {
+  from {
+    border-color: #f22;
+  }
+  50% {
+    border-color: #f00;
+  }
+  to {
+    border-color: #c00;
+  }
+}
+.selected::before {
+  width: 18px;
+  height: 18px;
+  content: url('./chisel.png');
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 10;
+}
+.marking::before {
+  bottom: 8px;
+  left: 8px;
+  animation-name: draw-x;
+  animation-duration: .24s;
+}
+@keyframes draw-x {
+  from {
+    transform: translateX(4px) translateY(-4px);
+  }
+  50% {
+    transform: translateX(-2px) translateY(4px);
+  }
+  51% {
+    transform: translateX(-2px) translateY(-4px);
+  }
+  to {
+    transform: translateX(4px) translateY(4px);
+  }
+}
+.cleaning::before {
+  content: url('./hand.png');
+  bottom: 2px;
+  left: 2px;
+  animation-duration: .12s;
+  animation-name: hand-wipe;
+}
+@keyframes hand-wipe {
+  from {
+    transform: translateX(0) rotate(0);
+  }
+  50% {
+    transform: translateX(22px) rotate(45deg);
+  }
+  to {
+    transform: translateX(-24px) rotate(-5deg);
+  }
+}
+.etching::after {
+  width: 18px;
+  height: 18px;
+  content: url('./hammer.png');
+  position: absolute;
+  bottom: 32px;
+  left: 48px;
+  z-index: 20;
+  animation-duration: .12s;
+  animation-name: hammer-hit;
+}
+@keyframes hammer-hit {
+  from {
+    transform: translateX(0) translateY(0) rotate(0);
+  }
+  to {
+    transform: translateX(-31px) translateY(19px) rotate(-45deg);
+  }
+}
